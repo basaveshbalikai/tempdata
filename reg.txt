@@ -1,0 +1,299 @@
+PReg
+; ============================================
+; CIS Windows 10 IoT Enterprise Registry.pol
+; Administrative Templates Settings
+; ============================================
+
+; ============================================
+; CIS SECTION 18.1: WINDOWS COMPONENTS
+; ============================================
+
+; 18.1.1.1 (L1) Prevent enabling lock screen camera
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
+"NoLockScreenCamera"=dword:00000001
+
+; 18.1.1.2 (L1) Prevent enabling lock screen slide show
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
+"NoLockScreenSlideshow"=dword:00000001
+
+; 18.1.2.2 (L1) Turn off Microsoft consumer experiences
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableWindowsConsumerFeatures"=dword:00000001
+
+; 18.1.3 (L1) Do not suggest third-party content in Windows spotlight
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableThirdPartySuggestions"=dword:00000001
+
+; 18.1.4.1 (L1) Turn off toast notifications on the lock screen
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
+"NoToastApplicationNotificationOnLockScreen"=dword:00000001
+
+; 18.1.4.2 (L1) Turn off Windows Spotlight features
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableWindowsSpotlightFeatures"=dword:00000001
+
+; ============================================
+; CIS SECTION 18.2: MICROSOFT DEFENDER ANTIVIRUS
+; ============================================
+
+; 18.2.1 (L1) Turn off Microsoft Defender Antivirus
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
+"DisableAntiSpyware"=dword:00000000
+
+; 18.2.2 (L1) Turn off real-time protection
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableRealtimeMonitoring"=dword:00000000
+
+; 18.2.3 (L1) Turn off behavior monitoring
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableBehaviorMonitoring"=dword:00000000
+
+; 18.2.4 (L1) Turn on script scanning
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableScriptScanning"=dword:00000000
+
+; 18.2.5 (L1) Turn on removal of history before running scan
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Scan]
+"CheckForSignaturesBeforeRunningScan"=dword:00000001
+
+; ============================================
+; CIS SECTION 18.3: WINDOWS GAME RECORDING
+; ============================================
+
+; 18.3.1 (L1) Turn off Windows Game Recording and Broadcasting
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]
+"AllowGameDVR"=dword:00000000
+
+; ============================================
+; CIS SECTION 18.4: INTERNET EXPLORER
+; ============================================
+
+; 18.4.4 (L1) Prevent bypassing SmartScreen Filter warnings
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter]
+"PreventOverrideAppRepUnknown"=dword:00000001
+
+; 18.4.5 (L1) Prevent bypassing SmartScreen Filter warnings about files that are not commonly downloaded
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter]
+"PreventOverride"=dword:00000001
+
+; ============================================
+; CIS SECTION 18.8: WINDOWS MEDIA PLAYER
+; ============================================
+
+; 18.8.1.1 (L1) Prevent Windows Media DRM Internet Access
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WMDRM]
+"DisableOnline"=dword:00000001
+
+; ============================================
+; CIS SECTION 18.9: WINDOWS INK WORKSPACE
+; ============================================
+
+; 18.9.4.1 (L1) Allow Windows Ink Workspace
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
+"AllowWindowsInkWorkspace"=dword:00000000
+
+; ============================================
+; CIS SECTION 18.10: APP PRIVACY
+; ============================================
+
+; 18.10.12.1 (L1) Let Windows apps activate with voice
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+"LetAppsActivateWithVoice"=dword:00000002
+
+; 18.10.12.2 (L1) Let Windows apps activate with voice above the lock screen
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+"LetAppsActivateWithVoiceAboveLock"=dword:00000002
+
+; ============================================
+; CIS SECTION 18.18: WINDOWS REMOTE MANAGEMENT
+; ============================================
+
+; 18.18.2 (L1) Disallow Digest authentication
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client]
+"AllowDigest"=dword:00000000
+
+; 18.18.3 (L1) Disallow unencrypted traffic
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client]
+"AllowUnencryptedTraffic"=dword:00000000
+
+; 18.18.4 (L1) Disallow WinRM from storing RunAs credentials
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service]
+"DisableRunAs"=dword:00000001
+
+; ============================================
+; CIS SECTION 18.26: WINDOWS POWERSHELL
+; ============================================
+
+; 18.26.1 (L1) Turn on PowerShell Script Block Logging
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging]
+"EnableScriptBlockLogging"=dword:00000001
+
+; 18.26.2 (L1) Turn on PowerShell Transcription
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\Transcription]
+"EnableTranscripting"=dword:00000001
+"OutputDirectory"="C:\\Windows\\Logs\\PowerShell\\Transcripts"
+
+; ============================================
+; CIS SECTION 18.27: REMOTE ASSISTANCE
+; ============================================
+
+; 18.27.1.1 (L1) Configure Solicited Remote Assistance
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+"fAllowUnsolicited"=dword:00000000
+"fAllowToGetHelp"=dword:00000000
+
+; 18.27.1.2 (L1) Configure Offer Remote Assistance
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+"fAllowUnsolicited"=dword:00000000
+"fAllowFullControl"=dword:00000001
+
+; ============================================
+; CIS SECTION 18.28: REMOTE DESKTOP SERVICES
+; ============================================
+
+; 18.28.1.1 (L1) Always prompt for password upon connection
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+"fPromptForPassword"=dword:00000001
+
+; 18.28.1.2 (L1) Require secure RPC communication
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+"fEncryptRPCTraffic"=dword:00000001
+
+; 18.28.1.3 (L1) Set client connection encryption level
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+"MinEncryptionLevel"=dword:00000003
+
+; 18.28.2.1 (L1) Do not allow drive redirection
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+"fDisableCdm"=dword:00000001
+
+; 18.28.2.2 (L1) Do not allow COM port redirection
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+"fDisableCcm"=dword:00000001
+
+; 18.28.2.3 (L1) Do not allow LPT port redirection
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+"fDisableLPT"=dword:00000001
+
+; ============================================
+; CIS SECTION 18.31: WINDOWS UPDATE
+; ============================================
+
+; 18.31.1 (L1) Configure Automatic Updates
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
+"NoAutoUpdate"=dword:00000000
+"AUOptions"=dword:00000004
+"ScheduledInstallDay"=dword:00000000
+"ScheduledInstallTime"=dword:00000003
+
+; 18.31.2 (L1) Do not connect to any Windows Update Internet locations
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"DoNotConnectToWindowsUpdateInternetLocations"=dword:00000001
+
+; ============================================
+; CIS SECTION 18.32: WINDOWS DEFENDER SMARTScreen
+; ============================================
+
+; 18.32.1 (L1) Configure Windows Defender SmartScreen
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"EnableSmartScreen"=dword:00000001
+"ShellSmartScreenLevel"=dword:00000001
+
+; ============================================
+; CIS SECTION 18.33: APP RUNTIME
+; ============================================
+
+; 18.33.1.1 (L1) Allow Microsoft accounts to be optional
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"MSAOptional"=dword:00000001
+
+; ============================================
+; CIS SECTION 18.34: WINDOWS LOCK SCREEN
+; ============================================
+
+; 18.34.1.1 (L1) Prevent enabling lock screen camera
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
+"NoLockScreenCamera"=dword:00000001
+
+; 18.34.1.2 (L1) Prevent enabling lock screen slide show
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
+"NoLockScreenSlideshow"=dword:00000001
+
+; ============================================
+; CIS SECTION 19: ADDITIONAL SECURITY SETTINGS
+; ============================================
+
+; 19.1.3.1 (L1) Do not display network selection UI
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"DontDisplayNetworkSelectionUI"=dword:00000001
+
+; 19.5.1.1 (L1) MSS: AutoAdminLogon
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+"AutoAdminLogon"="0"
+
+; 19.5.1.2 (L1) MSS: DisableIPSourceRouting IPv6
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters]
+"DisableIPSourceRouting"=dword:00000002
+
+; 19.5.1.3 (L1) MSS: DisableIPSourceRouting IPv4
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
+"DisableIPSourceRouting"=dword:00000002
+
+; 19.5.1.4 (L1) MSS: EnableICMPRedirect
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
+"EnableICMPRedirect"=dword:00000000
+
+; 19.5.1.5 (L1) MSS: KeepAliveTime
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
+"KeepAliveTime"=dword:000927c0
+
+; 19.5.1.6 (L1) MSS: NoNameReleaseOnDemand
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]
+"NoNameReleaseOnDemand"=dword:00000001
+
+; 19.5.1.7 (L1) MSS: PerformRouterDiscovery
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
+"PerformRouterDiscovery"=dword:00000000
+
+; 19.5.1.8 (L1) MSS: SafeDllSearchMode
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]
+"SafeDllSearchMode"=dword:00000001
+
+; 19.5.1.9 (L1) MSS: ScreenSaverGracePeriod
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+"ScreenSaverGracePeriod"="5"
+
+; 19.5.1.10 (L1) MSS: TcpMaxDataRetransmissions IPv6
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters]
+"TcpMaxDataRetransmissions"=dword:00000003
+
+; 19.5.1.11 (L1) MSS: TcpMaxDataRetransmissions IPv4
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
+"TcpMaxDataRetransmissions"=dword:00000003
+
+; 19.5.1.12 (L1) MSS: WarningLevel
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
+"WarningLevel"=dword:00000050
+
+; 19.6.6.1 (L1) Windows Firewall: Domain: Logging
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging]
+"LogFilePath"="%SystemRoot%\\System32\\logfiles\\firewall\\domainfw.log"
+"LogFileSize"=dword:00004000
+"LogDroppedPackets"=dword:00000001
+"LogSuccessfulConnections"=dword:00000001
+
+; 19.7.4.1 (L1) Configure detection for potentially unwanted applications
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
+"PUAProtection"=dword:00000001
+
+; 19.7.4.2 (L1) Turn off routine remediation
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
+"DisableRoutinelyTakingAction"=dword:00000000
+
+; 19.7.5.1 (L1) Configure Watson events
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting]
+"DisableGenericReports"=dword:00000000
+
+; 19.7.7.1 (L1) Turn off Microsoft Defender AntiVirus
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
+"DisableAntiSpyware"=dword:00000000
