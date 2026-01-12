@@ -1,0 +1,269 @@
+# ============================================
+# CIS Windows 10 IoT Advanced Audit Policy Script
+# Covers CIS Sections 17.2.1 through 17.11.4
+# ============================================
+
+Write-Host "Applying CIS Advanced Audit Policy..." -ForegroundColor Cyan
+
+# Backup current audit policy first
+$backupPath = "C:\Windows\Logs\audit_backup_$(Get-Date -Format 'yyyyMMdd_HHmmss').csv"
+auditpol.exe /backup /file:$backupPath
+Write-Host "Backup created: $backupPath" -ForegroundColor Green
+
+# ============================================
+# CIS 17.2: ACCOUNT LOGON
+# ============================================
+Write-Host "Configuring Account Logon audit policies..." -ForegroundColor Yellow
+
+# 17.2.1 (L1) Audit Credential Validation
+auditpol.exe /set /subcategory:"Credential Validation" /success:enable /failure:enable
+
+# 17.2.2 (L1) Audit Kerberos Authentication Service
+auditpol.exe /set /subcategory:"Kerberos Authentication Service" /success:enable /failure:enable
+
+# 17.2.3 (L1) Audit Kerberos Service Ticket Operations
+auditpol.exe /set /subcategory:"Kerberos Service Ticket Operations" /success:enable /failure:enable
+
+# 17.2.4 (L1) Audit Other Account Logon Events
+auditpol.exe /set /subcategory:"Other Account Logon Events" /success:enable /failure:enable
+
+# ============================================
+# CIS 17.3: ACCOUNT MANAGEMENT
+# ============================================
+Write-Host "Configuring Account Management audit policies..." -ForegroundColor Yellow
+
+# 17.3.1 (L1) Audit Application Group Management
+auditpol.exe /set /subcategory:"Application Group Management" /success:enable /failure:enable
+
+# 17.3.2 (L1) Audit Computer Account Management
+auditpol.exe /set /subcategory:"Computer Account Management" /success:enable /failure:enable
+
+# 17.3.3 (L1) Audit Distribution Group Management
+auditpol.exe /set /subcategory:"Distribution Group Management" /success:enable /failure:enable
+
+# 17.3.4 (L1) Audit Other Account Management Events
+auditpol.exe /set /subcategory:"Other Account Management Events" /success:enable /failure:enable
+
+# 17.3.5 (L1) Audit Security Group Management
+auditpol.exe /set /subcategory:"Security Group Management" /success:enable /failure:enable
+
+# 17.3.6 (L1) Audit User Account Management
+auditpol.exe /set /subcategory:"User Account Management" /success:enable /failure:enable
+
+# ============================================
+# CIS 17.4: DETAILED TRACKING
+# ============================================
+Write-Host "Configuring Detailed Tracking audit policies..." -ForegroundColor Yellow
+
+# 17.4.1 (L1) Audit DPAPI Activity
+auditpol.exe /set /subcategory:"DPAPI Activity" /success:enable /failure:enable
+
+# 17.4.2 (L1) Audit PNP Activity
+auditpol.exe /set /subcategory:"Plug and Play Events" /success:enable /failure:enable
+
+# 17.4.3 (L1) Audit Process Creation
+auditpol.exe /set /subcategory:"Process Creation" /success:enable /failure:enable
+
+# 17.4.4 (L1) Audit Process Termination (L2 - Optional)
+# auditpol.exe /set /subcategory:"Process Termination" /success:disable /failure:disable
+
+# ============================================
+# CIS 17.5: DS ACCESS
+# ============================================
+Write-Host "Configuring DS Access audit policies..." -ForegroundColor Yellow
+
+# Note: These are primarily for domain controllers
+# For IoT workgroup devices, we can disable these
+
+# 17.5.1 (L1) Audit Detailed Directory Service Replication
+auditpol.exe /set /subcategory:"Detailed Directory Service Replication" /success:disable /failure:disable
+
+# 17.5.2 (L1) Audit Directory Service Access
+auditpol.exe /set /subcategory:"Directory Service Access" /success:disable /failure:disable
+
+# 17.5.3 (L1) Audit Directory Service Changes
+auditpol.exe /set /subcategory:"Directory Service Changes" /success:disable /failure:disable
+
+# 17.5.4 (L1) Audit Directory Service Replication
+auditpol.exe /set /subcategory:"Directory Service Replication" /success:disable /failure:disable
+
+# 17.5.5 (L1) Audit Directory Service Access (L2)
+# Already covered above
+
+# ============================================
+# CIS 17.6: LOGON/LOGOFF
+# ============================================
+Write-Host "Configuring Logon/Logoff audit policies..." -ForegroundColor Yellow
+
+# 17.6.1 (L1) Audit Account Lockout
+auditpol.exe /set /subcategory:"Account Lockout" /success:enable /failure:enable
+
+# 17.6.2 (L1) Audit Group Membership
+auditpol.exe /set /subcategory:"Group Membership" /success:enable
+
+# 17.6.3 (L1) Audit Logoff
+auditpol.exe /set /subcategory:"Logoff" /success:enable
+
+# 17.6.4 (L1) Audit Logon
+auditpol.exe /set /subcategory:"Logon" /success:enable /failure:enable
+
+# 17.6.5 (L1) Audit Network Policy Server
+auditpol.exe /set /subcategory:"Network Policy Server" /success:enable /failure:enable
+
+# 17.6.6 (L1) Audit Other Logon/Logoff Events
+auditpol.exe /set /subcategory:"Other Logon/Logoff Events" /success:enable /failure:enable
+
+# 17.6.7 (L1) Audit Special Logon
+auditpol.exe /set /subcategory:"Special Logon" /success:enable
+
+# ============================================
+# CIS 17.7: OBJECT ACCESS
+# ============================================
+Write-Host "Configuring Object Access audit policies..." -ForegroundColor Yellow
+
+# 17.7.1 (L1) Audit Application Generated
+auditpol.exe /set /subcategory:"Application Generated" /success:enable /failure:enable
+
+# 17.7.2 (L1) Audit Certification Services
+auditpol.exe /set /subcategory:"Certification Services" /success:enable /failure:enable
+
+# 17.7.3 (L1) Audit Detailed File Share
+auditpol.exe /set /subcategory:"Detailed File Share" /success:enable /failure:enable
+
+# 17.7.4 (L1) Audit File Share
+auditpol.exe /set /subcategory:"File Share" /success:enable /failure:enable
+
+# 17.7.5 (L1) Audit File System
+# Warning: Can generate massive logs on IoT devices
+auditpol.exe /set /subcategory:"File System" /success:disable /failure:disable
+
+# 17.7.6 (L1) Audit Filtering Platform Connection
+auditpol.exe /set /subcategory:"Filtering Platform Connection" /success:enable /failure:enable
+
+# 17.7.7 (L1) Audit Filtering Platform Packet Drop
+auditpol.exe /set /subcategory:"Filtering Platform Packet Drop" /success:disable /failure:disable
+
+# 17.7.8 (L1) Audit Handle Manipulation
+auditpol.exe /set /subcategory:"Handle Manipulation" /success:disable /failure:disable
+
+# 17.7.9 (L1) Audit Kernel Object
+auditpol.exe /set /subcategory:"Kernel Object" /success:disable /failure:disable
+
+# 17.7.10 (L1) Audit Other Object Access Events
+auditpol.exe /set /subcategory:"Other Object Access Events" /success:enable /failure:enable
+
+# 17.7.11 (L1) Audit Registry
+# Warning: Can generate massive logs
+auditpol.exe /set /subcategory:"Registry" /success:disable /failure:disable
+
+# 17.7.12 (L1) Audit SAM
+auditpol.exe /set /subcategory:"SAM" /success:disable /failure:disable
+
+# ============================================
+# CIS 17.8: POLICY CHANGE
+# ============================================
+Write-Host "Configuring Policy Change audit policies..." -ForegroundColor Yellow
+
+# 17.8.1 (L1) Audit Audit Policy Change
+auditpol.exe /set /subcategory:"Audit Policy Change" /success:enable /failure:enable
+
+# 17.8.2 (L1) Audit Authentication Policy Change
+auditpol.exe /set /subcategory:"Authentication Policy Change" /success:enable /failure:enable
+
+# 17.8.3 (L1) Audit Authorization Policy Change
+auditpol.exe /set /subcategory:"Authorization Policy Change" /success:enable /failure:enable
+
+# 17.8.4 (L1) Audit Filtering Platform Policy Change
+auditpol.exe /set /subcategory:"Filtering Platform Policy Change" /success:enable /failure:enable
+
+# 17.8.5 (L1) Audit MPSSVC Rule-Level Policy Change
+auditpol.exe /set /subcategory:"MPSSVC Rule-Level Policy Change" /success:enable /failure:enable
+
+# 17.8.6 (L1) Audit Other Policy Change Events
+auditpol.exe /set /subcategory:"Other Policy Change Events" /success:enable /failure:enable
+
+# ============================================
+# CIS 17.9: PRIVILEGE USE
+# ============================================
+Write-Host "Configuring Privilege Use audit policies..." -ForegroundColor Yellow
+
+# 17.9.1 (L1) Audit Non Sensitive Privilege Use
+auditpol.exe /set /subcategory:"Non Sensitive Privilege Use" /success:disable /failure:disable
+
+# 17.9.2 (L1) Audit Other Privilege Use Events
+auditpol.exe /set /subcategory:"Other Privilege Use Events" /success:disable /failure:disable
+
+# 17.9.3 (L1) Audit Sensitive Privilege Use
+auditpol.exe /set /subcategory:"Sensitive Privilege Use" /success:enable /failure:enable
+
+# ============================================
+# CIS 17.10: SYSTEM
+# ============================================
+Write-Host "Configuring System audit policies..." -ForegroundColor Yellow
+
+# 17.10.1 (L1) Audit IPsec Driver
+auditpol.exe /set /subcategory:"IPsec Driver" /success:enable /failure:enable
+
+# 17.10.2 (L1) Audit Other System Events
+auditpol.exe /set /subcategory:"Other System Events" /success:enable /failure:enable
+
+# 17.10.3 (L1) Audit Security State Change
+auditpol.exe /set /subcategory:"Security State Change" /success:enable /failure:enable
+
+# 17.10.4 (L1) Audit Security System Extension
+auditpol.exe /set /subcategory:"Security System Extension" /success:enable /failure:enable
+
+# 17.10.5 (L1) Audit System Integrity
+auditpol.exe /set /subcategory:"System Integrity" /success:enable /failure:enable
+
+# ============================================
+# CIS 17.11: GLOBAL OBJECT ACCESS AUDITING
+# ============================================
+Write-Host "Configuring Global Object Access Auditing..." -ForegroundColor Yellow
+
+# Note: These are configured via SACL, not auditpol
+# The following registry keys would need to be set:
+
+# For file system SACLs (example - adjust for your IoT needs):
+$registryPath = "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\Audit"
+# This is complex and IoT-specific - usually left at defaults
+
+Write-Host "Advanced Audit Policy configuration complete!" -ForegroundColor Green
+
+# ============================================
+# VERIFICATION
+# ============================================
+Write-Host "`nVerifying audit policy configuration..." -ForegroundColor Cyan
+
+# Check critical settings
+$criticalSettings = @(
+    "Credential Validation",
+    "Logon",
+    "Account Lockout",
+    "User Account Management",
+    "Security Group Management",
+    "Process Creation",
+    "Audit Policy Change"
+)
+
+foreach ($setting in $criticalSettings) {
+    $result = auditpol.exe /get /subcategory:"$setting" /r | ConvertFrom-Csv
+    Write-Host "$setting : $($result.'Inclusion Setting')" -ForegroundColor Gray
+}
+
+# Export final configuration
+$exportPath = "C:\Windows\Logs\cis_audit_policy_$(Get-Date -Format 'yyyyMMdd').csv"
+auditpol.exe /get /category:* /r | Out-File $exportPath
+Write-Host "`nAudit policy exported to: $exportPath" -ForegroundColor Green
+
+# ============================================
+# CIS 19.6.6.1: WINDOWS FIREWALL LOGGING
+# ============================================
+Write-Host "`nConfiguring Windows Firewall logging..." -ForegroundColor Cyan
+
+# Enable firewall logging for all profiles
+Set-NetFirewallProfile -All -LogAllowed True -LogBlocked True -LogFileName "%SystemRoot%\System32\logfiles\firewall\pfirewall.log" -LogMaxSizeKilobytes 4096
+
+Write-Host "Firewall logging configured successfully!" -ForegroundColor Green
+
+Write-Host "`n=== CIS Advanced Audit Policy Script Complete ===" -ForegroundColor Cyan
